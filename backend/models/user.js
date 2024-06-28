@@ -6,15 +6,59 @@ const bcrypt = require('bcrypt');
 const userSchema = new Schema ({
     email: {
         type: String,
-        required: [true, 'Please enter an email.'],
+        required: [true, 'Veuillez saisir une adresse email.'],
         unique: true,
         lowercase: true,
-        validate: [isEmail, 'Please, enter a valid email.']
+        validate: [isEmail, 'Veuillez saisir une adresse email valide.']
     },
+    
     password: {
         type: String,
-        required: [true, 'Please, enter a password.'],
-        minlength: [14, 'The minimum password length is 14 characters.']
+        required: [true, 'Veuillez saisir un mot de passe.'],
+        minlength: [8, 'Le mot de passe doit être de 8 caractères minimum.'],
+        maxlength: [50, 'Le mot de passe ne doit pas dépasser 50 caractères.'],
+        //checking if the password has at least a number, a small letter, a capital letter and a special character
+        validate(value){
+            let errors = [];
+            // checking if it has a small letter
+            if( !/[a-z]+/.test(value) ){
+                errors.push('Le mot de passe doit contenir au moins 1 lettre minuscule.');
+                //throw new Error('Le mot de passe doit contenir au moins 1 lettre minuscule.')
+            }
+            // checking if it has a capital letter
+            if( !/[A-Z]+/.test(value) ){
+                errors.push('Le mot de passe doit contenir au moins 1 lettre majuscule.');
+                //throw new Error('Le mot de passe doit contenir au moins 1 lettre majuscule.');
+            }
+            //checking if it has a number
+            if( !/\d+/.test(value) ){
+                errors.push('Le mot de passe doit contenir au moins 1 chiffre.');
+                //throw new Error('Le mot de passe doit contenir au moins 1 chiffre.');
+            }
+            //checking if it has a special character
+            if ( !/\W+/.test(value) ){
+                errors.push('Le mot de passe doit contenir au moins 1 caractère spécial.');
+                //throw new Error('Le mot de passe doit contenir au moins 1 caractère spécial.');
+            }
+            if (errors.length > 0){
+                throw new Error(errors);
+            }
+        }
+
+    },
+    username: {
+        type: String,
+        required: [true, "Veuillez saisir un nom d'utilisateur."],
+        unique: true,
+        minlength: [4, "Le nom d'utilisateur doit être de 4 caractères minimum"],
+        maxlength: [24, "Le nom d'utilisateur ne doit pas dépasser 24 caractères"],
+        validate(value){
+            //checking if it has a special character
+            if ( /\W+/.test(value) ){
+                throw new Error("Le nom d'utilisateur ne doit pas contenir de caractères spéciaux.");
+            }
+        }
+
     }
 });
 
@@ -24,6 +68,17 @@ userSchema.pre('save', async function (next) {
     this.password = await bcrypt.hash(this.password, salt);
     next();
 });
+
+// static method to login a user
+userSchema.statics.login = async function(email, password){
+    const user = await this.findOne({ email });
+    if(user){
+        const auth = await bcrypt.compare(password, user.password);
+        if(auth) return user;
+        
+    }
+    throw Error('incorrect login');
+}
 
 
 const User = mongoose.model('User', userSchema);
