@@ -22,5 +22,8 @@ require("./controllers/mongoose_init");
 
 // Routing
 app.use('/', authRoutes);
+app.get('*', (req, res)=>{
+    res.render('index', {title:"accueil"});
+});
 
 module.exports = app;
