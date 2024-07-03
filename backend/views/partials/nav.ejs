@@ -1,5 +1,32 @@
-<nav>
-    <a href="/">
-        <img alt="Logo" height="100" src="/img/logo.png">
-    </a>
-</nav>
+<div id="nav-box">
+    <nav>
+        <a id="logo-nav" href="/">
+            <img alt="Logo" height="120" src="/img/logo.png">
+        </a>
+        
+        <div id="nav-categories">
+            <form id="form-nav">
+                <input id="text-input-nav" type="text" placeholder="Rechercher une curiosité...">
+                <button id="submit-input-nav"><img src="./img/magnifying-glass.svg" alt="research logo"></button>
+            </form>
+            <ul id="first-menu">
+                <li><a class="nav-links" href="/">Catégorie 1</a></li>
+                <li><a class="nav-links" href="/">Catégorie 2</a></li>
+                <li><a class="nav-links" href="/">Catégorie 3</a></li>
+                <li><a class="nav-links" href="/">Catégorie 4</a></li>
+                <li><a class="nav-links" href="/">Catégorie 5</a></li>
+                <li><a class="nav-links" href="/">Catégorie 6</a></li>
+            </ul>
+        </div>
+        
+        <ul id="second-menu">
+            <% if(typeof user=='undefined'){ %>
+            <li><a class="nav-links" href="/login">Se connecter</a></li>
+            <li><a class="nav-links" id="nav-inscription" href="/signup">Créer un compte</a></li>
+            <% }else { %>
+                <li><a class="nav-links" href="/">Profil</a></li>
+                <li><a class="nav-links" href="/logout">Se déconnecter</a></li>
+            <%}%>
+        </ul>
+    </nav>
+</div>

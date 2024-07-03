@@ -2,8 +2,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curios'Uni | <%= title %></title>
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/head.css">
+    <link rel="icon" href="img/logo_small_icon.png">
     <% if(typeof stylesheet!='undefined'){ %>
         <link rel="stylesheet" href="css/<%=stylesheet%>.css">
     <% } %>
 </head>
+<body>
+    <%- include('./nav.ejs') %>
+    <div id="scrollable">
+    

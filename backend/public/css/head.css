@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800');
+
+/*all pages*/
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p, a, form{
+    font-family: "Open Sans";
+}
+
+#scrollable{
+    margin-top:70px;
+    margin-left:15%;
+}
+
+
+/*Navigation bar*/
+#nav-box{
+    padding-top:10px;
+}
+
+#logo-nav{
+    padding:10px;
+    background-color: #d99e6a;
+    border-radius:50px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    margin-left:5%;
+    margin-right:5%;
+    align-items: center;
+    padding-bottom:10px;
+    border-bottom: 1px solid #ddd;
+}
+
+nav ul{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+nav li{
+    list-style-type: none;
+    margin-left:5px;
+    margin-right:5px;
+}
+
+/*first menu*/
+#nav-categories{
+    margin-left:30px;
+    display:flex;
+    flex-direction:row;
+}
+
+/*research bar form*/
+#form-nav{
+    margin:auto;
+    border: solid 1px #ddd;
+    border-radius:15px;
+    vertical-align:middle;
+    padding-right:5px;
+    padding-top:10px;
+    padding-bottom:10px;
+
+}
+
+#text-input-nav{
+    border:none;
+    padding-left:10px;
+    padding-top:10px;
+    padding-bottom:7px;
+    padding-right:50px;
+    font-size:14px;
+    background:none;
+}
+
+#text-input-nav:focus {
+    outline: none;
+    border:none;
+}
+
+#submit-input-nav{
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #f0c28f 0%,#d99e6a 50%, #c47c48 100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 10px;
+    padding:7px;
+    border:none;
+}
+
+#submit-input-nav:hover{
+    cursor:pointer;
+    background-position: right center;
+    color: rgb(245, 241, 241);
+}
+
+#submit-input-nav img{
+    width:15px;
+}
+
+/*all buttons in the nav bar*/
+.nav-links{
+    transition: 0.5s;
+    background-size: 200% auto;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 36px;
+    color: inherit;
+}
+
+.nav-links:hover{
+    background-image: linear-gradient(to right, rgba(74, 74, 74, 0.2) 0%,rgba(107, 107, 107, 0.2)  30%, rgba(163, 163, 163, 0.2) 100%);
+    background-position: right center;
+}
+
+/*bouton "créer un compte"*/
+#nav-inscription{
+    background-image: linear-gradient(to right, #f0c28f 0%,#d99e6a 50%, #c47c48 100%);
+    color:#2b2b2b;
+}
+
+#nav-inscription:hover{
+    color: rgb(245, 241, 241);
+    background-position: right center;
+}

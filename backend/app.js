@@ -23,7 +23,7 @@ require("./controllers/mongoose_init");
 // Routing
 app.use('/', authRoutes);
 app.get('*', (req, res)=>{
-    res.render('index', {title:"accueil"});
+    res.render('404', {title:"Page not found", stylesheet: "404"});
 });
 
 module.exports = app;
