@@ -2,6 +2,8 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: './.env'} );
 
+/*****functions******/
+
 // create jwt token
 const maxAge = 1*24*60*60; //1 day in seconds
 const createToken = (id) => {
@@ -35,8 +37,11 @@ const handleErrors = (err) =>{
     return errors;
 }
 
+
+/*****routes functions******/
+
 module.exports.signup_get = (req, res)=>{
-    res.send('signup get');
+    res.render('authentification/signup', {title: "Créer un compte", stylesheet: 'signup'});
 }
 
 module.exports.signup_post = async (req, res)=>{
@@ -55,7 +60,7 @@ module.exports.signup_post = async (req, res)=>{
 
 
 module.exports.login_get = (req, res)=>{
-    res.send('login get');
+    res.render('authentification/login', {title: "Se connecter", stylesheet: "login"});
 
 }
 

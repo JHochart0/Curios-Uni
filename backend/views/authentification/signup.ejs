@@ -1,0 +1,18 @@
+<%- include('../partials/head.ejs') %>
+<div id="signup-form-container">
+    <h1 id="signup-h1">Créer un compte</h1>
+    <form id="signup-form">
+        <label for="email">Adresse e-mail <span class="mandatory-asterisk">*</span></label>
+        <input type="text" name="email" id="email" required>
+
+        <label for="password">Mot de passe <span class="mandatory-asterisk">*</span></label>
+        <input type="password" name="password" id="password" required>
+
+        <label for="username">Nom d'utilisateur <span class="mandatory-asterisk">*</span></label>
+        <input type="text" name="username" id="username" required>
+
+        <button>Créer un compte</button>
+    </form>
+</div>
+
+<%- include('../partials/foot.ejs') %>

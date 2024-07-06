@@ -2,10 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800');
 
 /*all pages*/
+html{
+    background: white;
+}
+
 body{
+    background: inherit;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 p, a, form{
@@ -15,12 +21,22 @@ p, a, form{
 #scrollable{
     margin-top:70px;
     margin-left:15%;
+    margin-right:15%;
+    
 }
 
 
 /*Navigation bar*/
 #nav-box{
+    background: inherit;
     padding-top:10px;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -o-sticky;
+    position: -ms-sticky;
+    position: sticky;
+    top:0;
+    box-shadow: 0px 1px 5px #0009;
 }
 
 #logo-nav{
@@ -36,7 +52,6 @@ nav{
     margin-right:5%;
     align-items: center;
     padding-bottom:10px;
-    border-bottom: 1px solid #ddd;
 }
 
 nav ul{
