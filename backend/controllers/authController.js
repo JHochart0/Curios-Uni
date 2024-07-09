@@ -41,7 +41,7 @@ const handleErrors = (err) =>{
 /*****routes functions******/
 
 module.exports.signup_get = (req, res)=>{
-    res.render('authentification/signup', {title: "Créer un compte", stylesheet: 'signup'});
+    res.render('authentification/signup', {title: "Créer un compte", stylesheet: 'authentification/signup'});
 }
 
 module.exports.signup_post = async (req, res)=>{
@@ -60,7 +60,7 @@ module.exports.signup_post = async (req, res)=>{
 
 
 module.exports.login_get = (req, res)=>{
-    res.render('authentification/login', {title: "Se connecter", stylesheet: "login"});
+    res.render('authentification/login', {title: "Se connecter", stylesheet: "authentification/login"});
 
 }
 

@@ -87,15 +87,15 @@ nav li{
 
 #text-input-nav{
     border:none;
+    width : 240px;
+    height:30px;
     padding-left:10px;
-    padding-top:10px;
-    padding-bottom:7px;
-    padding-right:50px;
+    padding-right:10px;
     font-size:14px;
     background:none;
 }
 
-#text-input-nav:focus {
+#text-input-nav:focus{
     outline: none;
     border:none;
 }

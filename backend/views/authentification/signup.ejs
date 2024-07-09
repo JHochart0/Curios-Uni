@@ -2,17 +2,35 @@
 <div id="signup-form-container">
     <h1 id="signup-h1">Créer un compte</h1>
     <form id="signup-form">
-        <label for="email">Adresse e-mail <span class="mandatory-asterisk">*</span></label>
-        <input type="text" name="email" id="email" required>
+        <div class="input-container-signup">
+            <label class="label-signup" for="email">Adresse e-mail <span class="mandatory-asterisk">*</span></label>
+            <input class="signup-input" type="text" name="email" id="email" required>
+        </div>
+        
+        <div class="input-container-signup">
+            <label class="label-signup" for="password">Mot de passe <span class="mandatory-asterisk">*</span></label>
+            <input class="signup-input" type="password" name="password" id="password" required>
+        </div>
 
-        <label for="password">Mot de passe <span class="mandatory-asterisk">*</span></label>
-        <input type="password" name="password" id="password" required>
+        <div class="input-container-signup">
+            <label class="label-signup" for="username">Nom d'utilisateur <span class="mandatory-asterisk">*</span></label>
+            <input class="signup-input" type="text" name="username" id="username" required>
+        </div>
 
-        <label for="username">Nom d'utilisateur <span class="mandatory-asterisk">*</span></label>
-        <input type="text" name="username" id="username" required>
-
-        <button>Créer un compte</button>
+        <div class="input-container-signup">
+            <button class="signup-input" id="signup-submit">Créer un compte</button>
+        </div>
     </form>
+    <div id="password-must-contains">
+        <p>Le mot de passe doit contenir :</p>
+        <ul>
+            <li>1 lettre minuscule</li>
+            <li>1 lettre majuscule</li>
+            <li>1 chiffre</li>
+            <li>1 caractère spécial</li>
+        </ul>
+    </div>
+    
 </div>
 
 <%- include('../partials/foot.ejs') %>

@@ -1,0 +1,65 @@
+#login-form-container{
+    font-family: "Open Sans";
+    border: solid 1px #ddd;
+    border-radius: 10px;
+    box-shadow: 10px 5px 10px #999;
+    padding:20px;
+    width:30%;
+    margin:auto;
+}
+
+#login-h1{
+    font-family: "Pacifico";
+    text-align:center;
+    color:#2b2b2b;
+}
+
+#login-form{
+    display:block;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+}
+
+.input-container-login{
+    margin-bottom:20px;
+}
+
+.login-input{
+    display:block;
+    margin:auto;
+    width:80%;
+    height:40px;
+    border: solid 1px #ddd;
+    border-radius:10px;
+    font-size:14px;
+}
+
+.login-input:focus{
+    outline: none;
+}
+
+.label-login{
+    display:block;
+    margin:auto;
+    padding-left:5px;
+    width:80%;
+}
+
+.mandatory-asterisk{
+    color:#c47c48;
+}
+
+#login-submit{
+    background-image: linear-gradient(to right, #f0c28f 0%,#d99e6a 50%, #c47c48 100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    
+}
+
+#login-submit:hover{
+    cursor:pointer;
+    background-position: right center;
+    color: rgb(245, 241, 241);
+}
