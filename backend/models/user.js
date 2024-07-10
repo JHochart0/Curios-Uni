@@ -11,6 +11,20 @@ const userSchema = new Schema ({
         lowercase: true,
         validate: [isEmail, 'Veuillez saisir une adresse email valide.']
     },
+
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        minlength: [4, "Le nom d'utilisateur doit être de 4 caractères minimum."],
+        maxlength: [24, "Le nom d'utilisateur ne doit pas dépasser 24 caractères."],
+        validate(value){
+            //checking if it has a special character
+            if ( /\W+/.test(value) ){
+                throw new Error("Le nom d'utilisateur ne doit pas contenir de caractères spéciaux.");
+            }
+        }
+    },
     
     password: {
         type: String,
@@ -40,22 +54,8 @@ const userSchema = new Schema ({
                 throw new Error(errors);
             }
         }
-
-    },
-    username: {
-        type: String,
-        required: [true, "Veuillez saisir un nom d'utilisateur."],
-        unique: true,
-        minlength: [4, "Le nom d'utilisateur doit être de 4 caractères minimum."],
-        maxlength: [24, "Le nom d'utilisateur ne doit pas dépasser 24 caractères."],
-        validate(value){
-            //checking if it has a special character
-            if ( /\W+/.test(value) ){
-                throw new Error("Le nom d'utilisateur ne doit pas contenir de caractères spéciaux.");
-            }
-        }
-
     }
+    
 });
 
 // fire a function before doc saved to db
