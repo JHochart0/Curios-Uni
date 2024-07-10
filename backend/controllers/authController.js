@@ -14,11 +14,12 @@ const createToken = (id) => {
 
 // handle signup and login errors (NEED TO COMPLETE IT WHEN I FINISH THE USER MODEL)
 const handleErrors = (err) =>{
+    //console.log(err);
     let errors = {email: '', password: '', username: ''};
 
     //incorrect email or password during the login
     if(err.message=='incorrect login'){
-        errors.password = 'Email ou mot de passe incorrect. Veuillez réessayer.'
+        errors.password = 'Adresse e-mail ou mot de passe incorrect. Veuillez réessayer.'
     }
 
     //duplicated email error code during registration
@@ -55,7 +56,7 @@ module.exports.signup_get = (req, res)=>{
 
 module.exports.signup_post = async (req, res)=>{
     const {email, username, password} = req.body;
-    
+
     try{
         const user = await User.create({ email, username, password });
         const token = createToken(user._id);
@@ -79,7 +80,17 @@ module.exports.login_get = (req, res)=>{
 }
 
 module.exports.login_post = async (req, res)=>{
-    res.send('login post');
+    const {email, password} = req.body;
+    try{
+        const user = await User.login(email, password);
+        const token = createToken(user._id);
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge*1000 });
+        res.status(200).json({user: user._id});
+    }
+    catch(err){
+        const errors = handleErrors(err);
+        res.status(400).json({errors});
+    }
 
 }
 

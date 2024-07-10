@@ -47,6 +47,16 @@
     width:80%;
 }
 
+.error-message{
+    display:block;
+    margin:auto;
+    padding-left:5px;
+    width:80%;
+    color:#cf3932;
+    font-weight:bold;
+    font-size:14px;
+}
+
 #login-submit{
     background-image: linear-gradient(to right, #f0c28f 0%,#d99e6a 50%, #c47c48 100%);
     transition: 0.5s;
