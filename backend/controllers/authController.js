@@ -41,11 +41,15 @@ const handleErrors = (err) =>{
 /*****routes functions******/
 
 module.exports.signup_get = (req, res)=>{
-    res.render('authentification/signup', {title: "Créer un compte", stylesheet: 'authentification/signup'});
+    res.render('authentification/signup', {
+        title: "Créer un compte", 
+        stylesheet: 'authentification/signup',
+        script: "authentification/signup"
+    });
 }
 
 module.exports.signup_post = async (req, res)=>{
-    const {email, password, username} = req.body;
+    const {email, username, password} = req.body;
     try{
         const user = await User.create({ email, password, username });
         const token = createToken(user._id);
@@ -60,7 +64,11 @@ module.exports.signup_post = async (req, res)=>{
 
 
 module.exports.login_get = (req, res)=>{
-    res.render('authentification/login', {title: "Se connecter", stylesheet: "authentification/login"});
+    res.render('authentification/login', {
+        title: "Se connecter", 
+        stylesheet: "authentification/login", 
+        script: "authentification/login"
+    });
 
 }
 

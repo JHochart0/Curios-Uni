@@ -23,22 +23,18 @@ const userSchema = new Schema ({
             // checking if it has a small letter
             if( !/[a-z]+/.test(value) ){
                 errors.push('Le mot de passe doit contenir au moins 1 lettre minuscule.');
-                //throw new Error('Le mot de passe doit contenir au moins 1 lettre minuscule.')
             }
             // checking if it has a capital letter
             if( !/[A-Z]+/.test(value) ){
                 errors.push('Le mot de passe doit contenir au moins 1 lettre majuscule.');
-                //throw new Error('Le mot de passe doit contenir au moins 1 lettre majuscule.');
             }
             //checking if it has a number
             if( !/\d+/.test(value) ){
                 errors.push('Le mot de passe doit contenir au moins 1 chiffre.');
-                //throw new Error('Le mot de passe doit contenir au moins 1 chiffre.');
             }
             //checking if it has a special character
             if ( !/\W+/.test(value) ){
                 errors.push('Le mot de passe doit contenir au moins 1 caractère spécial.');
-                //throw new Error('Le mot de passe doit contenir au moins 1 caractère spécial.');
             }
             if (errors.length > 0){
                 throw new Error(errors);
@@ -50,8 +46,8 @@ const userSchema = new Schema ({
         type: String,
         required: [true, "Veuillez saisir un nom d'utilisateur."],
         unique: true,
-        minlength: [4, "Le nom d'utilisateur doit être de 4 caractères minimum"],
-        maxlength: [24, "Le nom d'utilisateur ne doit pas dépasser 24 caractères"],
+        minlength: [4, "Le nom d'utilisateur doit être de 4 caractères minimum."],
+        maxlength: [24, "Le nom d'utilisateur ne doit pas dépasser 24 caractères."],
         validate(value){
             //checking if it has a special character
             if ( /\W+/.test(value) ){

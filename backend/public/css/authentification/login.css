@@ -47,10 +47,6 @@
     width:80%;
 }
 
-.mandatory-asterisk{
-    color:#c47c48;
-}
-
 #login-submit{
     background-image: linear-gradient(to right, #f0c28f 0%,#d99e6a 50%, #c47c48 100%);
     transition: 0.5s;

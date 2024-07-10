@@ -1,21 +1,26 @@
 <%- include('../partials/head.ejs') %>
 <div id="signup-form-container">
     <h1 id="signup-h1">Créer un compte</h1>
-    <form id="signup-form">
+    <form id="signup-form" action="/signup" method="POST">
         <div class="input-container-signup">
             <label class="label-signup" for="email">Adresse e-mail <span class="mandatory-asterisk">*</span></label>
             <input class="signup-input" type="text" name="email" id="email" required>
+            <div id="email-error" class="error-message"></div>
         </div>
         
         <div class="input-container-signup">
-            <label class="label-signup" for="password">Mot de passe <span class="mandatory-asterisk">*</span></label>
-            <input class="signup-input" type="password" name="password" id="password" required>
+            <label class="label-signup" for="username">Nom d'utilisateur <span class="mandatory-asterisk">*</span></label>
+            <input class="signup-input" type="text" name="username" id="username" required>
+            <div id="username-error" class="error-message"></div>
         </div>
 
         <div class="input-container-signup">
-            <label class="label-signup" for="username">Nom d'utilisateur <span class="mandatory-asterisk">*</span></label>
-            <input class="signup-input" type="text" name="username" id="username" required>
+            <label class="label-signup" for="password">Mot de passe <span class="mandatory-asterisk">*</span></label>
+            <input class="signup-input" type="password" name="password" id="password" required>
+            <div id="password-error" class="error-message"></div>
         </div>
+
+        
 
         <div class="input-container-signup">
             <button class="signup-input" id="signup-submit">Créer un compte</button>
@@ -35,4 +40,7 @@
     
 </div>
 
+<% if (typeof script!='undefined'){ %>
+    <script src="/scripts/<%= script %>.js"></script>
+<% }%>
 <%- include('../partials/foot.ejs') %>
