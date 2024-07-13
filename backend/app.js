@@ -1,4 +1,4 @@
-// all libraries requires
+// all libraries and files requires
 const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -16,11 +16,15 @@ app.use(express.urlencoded({extended: true}));
 //middlewares and static files
 app.use(express.static('public'));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
+
 
 //init mongoose
 require("./controllers/mongoose_init");
-
+const {_, checkCurrentUser} = require('./middlewares/authMiddleware');
 // Routing
+app.use(checkCurrentUser);
 app.use('/', authRoutes);
 
 

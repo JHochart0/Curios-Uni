@@ -17,7 +17,7 @@ const userSchema = new Schema ({
         required: true,
         unique: true,
         minlength: [4, "Le nom d'utilisateur doit être de 4 caractères minimum."],
-        maxlength: [24, "Le nom d'utilisateur ne doit pas dépasser 24 caractères."],
+        maxlength: [16, "Le nom d'utilisateur ne doit pas dépasser 16 caractères."],
         validate(value){
             //checking if it has a special character
             if ( /\W+/.test(value) ){

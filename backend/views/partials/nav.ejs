@@ -20,12 +20,13 @@
         </div>
         
         <ul id="second-menu">
-            <% if(typeof user=='undefined'){ %>
-            <li><a class="nav-links" href="/login">Se connecter</a></li>
-            <li><a class="nav-links" id="nav-inscription" href="/signup">Créer un compte</a></li>
-            <% }else { %>
-                <li><a class="nav-links" href="/">Profil</a></li>
-                <li><a class="nav-links" href="/logout">Se déconnecter</a></li>
+            <% if(typeof user=='undefined') { %>
+                <li><a class="nav-links" href="/login">Se connecter</a></li>
+                <li><a class="nav-links" id="nav-signup" href="/signup">Créer un compte</a></li>
+
+            <% }else { %> 
+                <li><a class="nav-links" id="nav-profile" href="/"><img src="./img/profile.svg" alt="research logo"><%=user.username%> </a></li>
+                <li><a class="nav-links" id="nav-logout" href="/logout"><img src="./img/logout.svg" alt="research logo">Se déconnecter</a></li>
             <%}%>
         </ul>
     </nav>
