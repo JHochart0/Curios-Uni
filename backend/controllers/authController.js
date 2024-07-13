@@ -12,7 +12,7 @@ const createToken = (id) => {
     });
 }
 
-// handle signup and login errors (NEED TO COMPLETE IT WHEN I FINISH THE USER MODEL)
+// handle signup and login errors
 const handleErrors = (err) =>{
     //console.log(err);
     let errors = {email: '', password: '', username: ''};
