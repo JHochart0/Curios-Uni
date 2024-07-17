@@ -2,9 +2,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const {_, checkCurrentUser} = require('./middlewares/authMiddleware');
+require("./controllers/mongoose_init");
 
 // routes requires
 const authRoutes = require('./routes/authRoutes');
+const curiosityRoutes = require('./routes/curiosityRoutes');
 
 // express instanciation
 const app = express();
@@ -18,15 +21,12 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
+app.use(checkCurrentUser); // middleware to check who is currently connected
 
 
-//init mongoose
-require("./controllers/mongoose_init");
-const {_, checkCurrentUser} = require('./middlewares/authMiddleware');
 // Routing
-app.use(checkCurrentUser);
 app.use('/', authRoutes);
-
+app.use('/', curiosityRoutes);
 
 app.get('*', (req, res)=>{
     res.render('404', {title:"Page non trouvée", stylesheet: "404"});
