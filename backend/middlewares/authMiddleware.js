@@ -4,7 +4,7 @@ require('dotenv').config({ path: './.env'} );
 
 const User = require('../models/user');
 
-// middleware to check if the user is currently connected or not
+// middleware to force the user to be connected on the page
 const requireAuth=(req, res, next) =>{
     const token = req.cookies.jwt;
 
@@ -23,6 +23,20 @@ const requireAuth=(req, res, next) =>{
     else{
         res.redirect('/login');
     }
+}
+
+
+//middleware to force the user to have his email verified on the page
+// !! needs to be called after requireAuth imperatively !!
+const requireEmailVerified= async (req, res, next) =>{
+    const user = res.locals.user;
+    if(!user.isVerified){
+        res.redirect('/login'); // a changer avec la page "aller vérifier son compte"
+    }
+    else{
+        next();
+    }
+    
 }
 
 // middleware to check who is the current user connected and give to the page the informations of the user
@@ -49,4 +63,4 @@ const checkCurrentUser= (req, res, next) =>{
     }
 }
 
-module.exports = {requireAuth, checkCurrentUser};
+module.exports = {requireAuth, requireEmailVerified, checkCurrentUser};

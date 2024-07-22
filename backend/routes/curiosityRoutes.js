@@ -3,8 +3,8 @@ const router = express.Router();
 
 const curiosityController = require('../controllers/curiosityController');
 
-//const {requireAuth, _} = require('../middlewares/authMiddleware');
+const {requireAuth, requireEmailVerified, _} = require('../middlewares/authMiddleware');
 
-router.get('/', /*requireAuth,*/ curiosityController.curiosityHome);
+router.get('/', requireAuth, requireEmailVerified, curiosityController.curiosityHome);
 
 module.exports = router;

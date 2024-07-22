@@ -1,5 +1,12 @@
 <%- include('../partials/head.ejs') %>
-<p>salut</p>
+
+<div id="email-verification-box">
+    <div class="loader"></div>
+    <p><img src="./img/tick.svg" alt="tick logo">
+        Votre adresse a bien été vérifiée, redirection vers l'accueil...
+    </p>
+</div>
+
 <% if (typeof script!='undefined'){ %>
     <script src="/scripts/<%= script %>.js"></script>
 <% }%>
