@@ -50,12 +50,22 @@ const userSchema = new Schema ({
             if ( !/\W+/.test(value) ){
                 errors.push('Le mot de passe doit contenir au moins 1 caractère spécial.');
             }
+            //throwing the errors if there are ones
             if (errors.length > 0){
                 throw new Error(errors);
             }
         }
+    },
+
+    emailToken: {
+        type: String
+    },
+
+    isVerified: {
+        type: Boolean,
+        default: false
     }
-    
+
 });
 
 // fire a function before doc saved to db

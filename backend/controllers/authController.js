@@ -1,6 +1,8 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
+const crypto = require("crypto");
 require('dotenv').config({ path: './.env'} );
+
 
 /*****functions******/
 
@@ -58,7 +60,13 @@ module.exports.signup_post = async (req, res)=>{
     const {email, username, password} = req.body;
 
     try{
-        const user = await User.create({ email, username, password });
+        const user = await User.create({ 
+            email,
+            username,
+            password,
+            emailToken: crypto.randomBytes(64).toString("hex")
+        });
+
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge*1000 });
         res.status(201).json({user: user._id});
@@ -97,4 +105,37 @@ module.exports.login_post = async (req, res)=>{
 module.exports.logout = (req, res)=>{
     res.clearCookie("jwt");
     res.redirect('/');
+}
+
+
+module.exports.verifyEmail = async (req, res) => {
+    try{
+        const emailToken = req.query.emailToken;
+
+        if(!emailToken){
+            return res.status(404).json("EmailToken not found..."); //à modifier avec une page erreur
+        }
+        const user = await User.findOne({ emailToken });
+
+        if(user){
+            const update = { emailToken : null,
+                isVerified : true };
+            await user.updateOne( update);
+
+            res.render('authentification/verifyEmail', {
+                title: "Vérification de l'email...", 
+                stylesheet: "authentification/verifyEmail", 
+                script: "authentification/verifyEmail",
+            });
+
+        }
+        else{
+            res.status(404).json("Email verification failed, invalid token!") // a modifier avec une page erreur
+        }
+
+    } 
+    catch(err){
+        console.log(err);
+        res.status(500).json(err.message); // a modifier avec page d'erreur
+    }
 }

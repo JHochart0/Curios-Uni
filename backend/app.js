@@ -1,6 +1,5 @@
 // all libraries and files requires
 const express = require('express');
-const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const {_, checkCurrentUser} = require('./middlewares/authMiddleware');
 require("./controllers/mongoose_init");
