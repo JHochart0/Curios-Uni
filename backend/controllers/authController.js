@@ -113,8 +113,10 @@ module.exports.verifyEmail = async (req, res) => {
         const emailToken = req.query.emailToken;
 
         if(!emailToken){
-            return res.status(404).json("EmailToken not found..."); //à modifier avec une page erreur
+
+            return res.status(404).render('error', {title:"Page non trouvée", stylesheet: "error", error: '404'});
         }
+
         const user = await User.findOne({ emailToken });
 
         if(user){
@@ -130,12 +132,13 @@ module.exports.verifyEmail = async (req, res) => {
 
         }
         else{
-            res.status(404).json("Email verification failed, invalid token!") // a modifier avec une page erreur
+
+            res.status(404).render('error', {title:"Page non trouvée", stylesheet: "error", error: '404'}); 
         }
 
     } 
     catch(err){
         console.log(err);
-        res.status(500).json(err.message); // a modifier avec page d'erreur
+        res.status(500).render('error', {title:"Erreur de service interne", stylesheet: "error", error: '500'}); // a modifier avec page d'erreur
     }
 }

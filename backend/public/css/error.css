@@ -1,8 +1,8 @@
-#h1-404, #h2-404{
+.h1-error, .h2-error{
     font-family: "Pacifico";
 }
 
-#h1-404{
+.h1-error{
     color : #d99e6a;
     padding: 0px;
     margin: 0px;
@@ -11,22 +11,22 @@
     line-height: 100%;
 }
 
-#h2-404{
+.h2-error{
     color:#2b2b2b;
     padding: 0px;
     margin: 0px;
     line-height: 100%;
 }
 
-#back-home-404{
+.back-home-error{
     padding-top:70px;
 }
 
-#p-404{
+.p-error{
     margin-bottom:30px;
 }
 
-#link-404{
+.link-error{
     transition: 0.5s;
     background-image: linear-gradient(to right, #f0c28f 0%,#d99e6a 50%, #c47c48 100%);
     background-size: 200% auto;
@@ -36,7 +36,7 @@
     color: #2b2b2b;
 }
 
-#link-404:hover{
+.link-error:hover{
     color: rgb(245, 241, 241);
     background-position: right center;
 }

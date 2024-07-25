@@ -28,7 +28,7 @@ app.use('/', authRoutes);
 app.use('/', curiosityRoutes);
 
 app.get('*', (req, res)=>{
-    res.render('404', {title:"Page non trouvée", stylesheet: "404"});
+    res.render('error', {title:"Page non trouvée", stylesheet: "error", error: '404'});
 });
 
 module.exports = app;

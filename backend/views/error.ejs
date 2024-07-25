@@ -1,0 +1,24 @@
+<%- include('./partials/head.ejs') %>
+<div id="error-container">
+    <div class="error-message">
+        <% if (error=="404"){ %>
+            <h1 class="h1-error">404</h1>
+            <h2 class="h2-error">Perdu dans vos fouilles !</h2>
+        <% }else if(error=="500"){ %>
+            <h1 class="h1-error">500</h1>
+            <h2 class="h2-error">Oups ! Un obstacle imprévu dans votre quête de curiosités !</h2>
+        <% } %>
+    </div>
+    <div class="back-home-error">
+        <% if (error=="404"){ %>
+        <p class="p-error">Désolés, la page que vous souhaitez accéder n'existe pas.</p>
+        <% }else if(error=="500"){ %>
+        <p class="p-error">Désolés, une erreur s'est produite. Veuillez réessayer plus tard.</p>
+        <% } %>
+        
+        
+        <a class="link-error" href="/">← Retour à l'accueil</a>
+    </div>
+</div>
+
+<%- include('./partials/foot.ejs') %>
