@@ -2,7 +2,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const crypto = require("crypto");
 require('dotenv').config({ path: './.env'} );
-
+const {sendVerificationEmail} =require("../utils/sendVerificationMail");
 
 /*****functions******/
 
@@ -66,6 +66,8 @@ module.exports.signup_post = async (req, res)=>{
             password,
             emailToken: crypto.randomBytes(64).toString("hex")
         });
+
+        sendVerificationEmail(user);
 
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge*1000 });
@@ -132,13 +134,20 @@ module.exports.verifyEmail = async (req, res) => {
 
         }
         else{
-
-            res.status(404).render('error', {title:"Page non trouvée", stylesheet: "error", error: '404'}); 
+            res.status(404).render('error', {
+                title:"Page non trouvée",
+                stylesheet: "error",
+                error: '404'
+            }); 
         }
 
     } 
     catch(err){
         console.log(err);
-        res.status(500).render('error', {title:"Erreur de service interne", stylesheet: "error", error: '500'}); // a modifier avec page d'erreur
+        res.status(500).render('error', {
+            title:"Erreur de service interne",
+            stylesheet: "error",
+            error: '500'
+        });
     }
 }

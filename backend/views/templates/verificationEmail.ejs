@@ -1,0 +1,74 @@
+
+
+<table align=center id="mail-container">
+    <tbody>
+        <tr id="tr-container">
+            <td id="td-container">
+                <table id="email-window">
+                    <tbody>
+                        <tr>
+                            <td class="td-mail" style="text-align:center;">
+                                <img id="logo" alt="Logo" height="138" src="cid:logo">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-mail">
+                                <h1>Vérification de votre adresse email</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-mail">
+                                <h2>Bonjour <%=user.username%>,</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-mail">
+                                <p>Vous avez initié une demande de vérification de compte Curios'Uni.</p>
+                                <p>Vérifier votre adresse email vous permet d'accéder à toutes les fonctionnalités du site et nous permet de vérifier votre identité.</p>
+                                <p>Pour vérifier votre compte, veuillez cliquer sur le lien suivant :</p>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="td-mail">
+                                <a href="<%=client_url%>/verify-email?emailToken=<%=user.emailToken%>">Vérifier votre adresse email</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-mail">
+                                <h3>À tout de suite sur Curios'Uni !</h3>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    #mail-container{
+        width:100%;
+    }
+
+    #tr-container{
+        width:100%;
+    }
+
+    #td-container{
+        padding-top:15px;
+        width:100%;
+    }
+
+    #td-mail{
+        padding:0px 15px;
+    }
+
+    #email-window{
+        border-collapse:collapse;
+        width:90%;
+        max-width:530px;
+        margin:auto;
+    }
+</style>

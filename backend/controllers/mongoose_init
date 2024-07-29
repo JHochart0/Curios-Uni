@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 require('dotenv').config({path: './.env'});
 
 // setting up variables for mongodb connection using .env informations
-const user = process.env.MONGODB_USERNAME;
-const pwd = process.env.MONGODB_PWD;
+const user = encodeURIComponent(process.env.MONGODB_USERNAME);
+const pwd = encodeURIComponent(process.env.MONGODB_PWD);
 const cluster_name = process.env.MONGODB_CLUSTER_NAME;
 const db_name = process.env.MONGODB_DB_NAME;
 
 // connecting to mongodb database
-const mongoDB = `mongodb+srv://${user}:${pwd}@${db_name}.pfctmwt.mongodb.net/${db_name}?retryWrites=true&w=majority&appName=${db_name}`;
+const mongoDB = `mongodb+srv://${user}:${pwd}@${cluster_name}.pfctmwt.mongodb.net/${db_name}?retryWrites=true&w=majority&appName=${db_name}`;
 mongoose.connect(mongoDB)
     .then((result)=> console.log('MONGODB CONNECT OK !'))
     .catch((err) => console.log(err));

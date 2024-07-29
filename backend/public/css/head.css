@@ -155,7 +155,9 @@ nav li{
 
 /*button profile*/
 #nav-profile{
+    min-width:100px;
     max-width:175px;
+    text-align:right;
 }
 
 #nav-profile:hover{
