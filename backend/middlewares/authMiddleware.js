@@ -7,7 +7,6 @@ const User = require('../models/user');
 // middleware to force the user to be connected on the page
 const requireAuth=(req, res, next) =>{
     const token = req.cookies.jwt;
-
     //check json web token exists & is verified
     if(token){
         jwt.verify(token, process.env.SECRET_JWT, (err, decodedToken)=>{
@@ -31,7 +30,7 @@ const requireAuth=(req, res, next) =>{
 const requireEmailVerified= async (req, res, next) =>{
     const user = res.locals.user;
     if(!user.isVerified){
-        res.redirect('/login'); // a changer avec la page "aller vérifier son compte"
+        res.redirect('/login'); // a changer avec la page "profil/aller vérifier son compte"
     }
     else{
         next();

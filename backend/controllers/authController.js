@@ -16,7 +16,6 @@ const createToken = (id) => {
 
 // handle signup and login errors
 const handleErrors = (err) =>{
-    //console.log(err);
     let errors = {email: '', password: '', username: ''};
 
     //incorrect email or password during the login
@@ -67,7 +66,6 @@ module.exports.signup_post = async (req, res)=>{
             emailToken: crypto.randomBytes(64).toString("hex")
         });
 
-        sendVerificationEmail(user);
 
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge*1000 });
@@ -105,26 +103,47 @@ module.exports.login_post = async (req, res)=>{
 }
 
 module.exports.logout = (req, res)=>{
-    res.clearCookie("jwt");
-    res.redirect('/');
+    res.cookie('jwt', '', {maxAge: 0});
+    res.redirect("/login");
+}
+
+
+module.exports.emailVerificationRequest = (req, res) =>{
+    const token = req.cookies.jwt;
+    // there is no need to check if the jwt exists since the page only show up when we checked if the user is authenticated
+    jwt.verify(token, process.env.SECRET_JWT, async (err, decodedToken)=>{
+        let user = await User.findById(decodedToken.id);
+        if(!user.isVerified){
+            sendVerificationEmail(user);
+    
+            res.render('authentification/requestEmail', {
+                title: "Veuillez vérifier votre email", 
+                stylesheet: "authentification/requestEmail"
+            });
+        }else{
+            res.status(200).render('error', {title:"Page plus disponible", stylesheet: "error", error: '410'});
+        }
+    }); 
 }
 
 
 module.exports.verifyEmail = async (req, res) => {
     try{
+        // we check if the url contains an email token
         const emailToken = req.query.emailToken;
-
         if(!emailToken){
-
             return res.status(404).render('error', {title:"Page non trouvée", stylesheet: "error", error: '404'});
         }
 
+        // we check if the email token is matching with a user in our database
         const user = await User.findOne({ emailToken });
-
         if(user){
-            const update = { emailToken : null,
-                isVerified : true };
-            await user.updateOne( update);
+            // we verify the user if the email token is the right one
+            const update = { 
+                emailToken : null,
+                isVerified : true
+            };
+            await user.updateOne(update);
 
             res.render('authentification/verifyEmail', {
                 title: "Vérification de l'email...", 
@@ -134,6 +153,7 @@ module.exports.verifyEmail = async (req, res) => {
 
         }
         else{
+            // the email token is wrong, the page doesn't exist
             res.status(404).render('error', {
                 title:"Page non trouvée",
                 stylesheet: "error",

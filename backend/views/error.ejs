@@ -7,16 +7,20 @@
         <% }else if(error=="500"){ %>
             <h1 class="h1-error">500</h1>
             <h2 class="h2-error">Oups ! Un obstacle imprévu dans votre quête de curiosités !</h2>
+        <% } else if(error=="410"){ %>
+            <h1 class="h1-error">410</h1>
+            <h2 class="h2-error">Site de fouilles déjà exploré !</h2>
         <% } %>
-    </div>
+        </div>
     <div class="back-home-error">
         <% if (error=="404"){ %>
         <p class="p-error">Désolés, la page que vous souhaitez accéder n'existe pas.</p>
         <% }else if(error=="500"){ %>
         <p class="p-error">Désolés, une erreur s'est produite. Veuillez réessayer plus tard.</p>
+        <% }else if(error=="410"){ %>
+            <p class="p-error">Désolés, la page que vous souhaitez accéder n'est plus disponible.</p>
         <% } %>
-        
-        
+
         <a class="link-error" href="/">← Retour à l'accueil</a>
     </div>
 </div>

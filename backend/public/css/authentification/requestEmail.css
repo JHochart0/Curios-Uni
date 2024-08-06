@@ -1,0 +1,21 @@
+#request-email-box{
+    text-align:center;
+}
+
+#link-box{
+    margin-top:50px;
+}
+.link-request-email{
+    transition: 0.5s;
+    background-image: linear-gradient(to right, #f0c28f 0%,#d99e6a 50%, #c47c48 100%);
+    background-size: 200% auto;
+    text-decoration:none;
+    padding: 10px 16px;
+    border-radius: 36px;
+    color: #2b2b2b;
+}
+
+.link-request-email:hover{
+    color: rgb(245, 241, 241);
+    background-position: right center;
+}

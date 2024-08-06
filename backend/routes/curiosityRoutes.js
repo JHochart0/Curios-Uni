@@ -5,6 +5,6 @@ const curiosityController = require('../controllers/curiosityController');
 
 const {requireAuth, requireEmailVerified, _} = require('../middlewares/authMiddleware');
 
-router.get('/', requireAuth, requireEmailVerified, curiosityController.curiosityHome);
+router.get('/', requireAuth, /*requireEmailVerified,*/ curiosityController.curiosityHome);
 
 module.exports = router;
