@@ -14,4 +14,4 @@ Si vous voulez tout-de-même le tester de votre côté, vous pouvez cloner ce pr
 
 3. Allumer le site web en saisissant `nodemon server.js` dans le dossier backend
 
-4. L'addresse URL du site est celle qui correspond à la variable "CLIENT_URL" dans le fichier `.env`
+4. L'adresse URL du site est celle qui correspond à la variable "CLIENT_URL" dans le fichier `.env`
