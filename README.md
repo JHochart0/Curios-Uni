@@ -1,34 +1,17 @@
-# Étapes de création de projet Node.Js
+# Site web type petites annonces "Curios'Uni"
 
-1. Créer le dossier de projet
+Ce site web est un site de petites annonces qui permet aux utilisateurs de poster des annonces d'échange d'objets de collections de toutes sortes (exemple : timbres, cartes à collectionner, vieux CDs ...).
 
-2. Créer un sous-dossier nommé "backend"
+Ce site web n'est en aucun cas un site officiel, il ne sert qu'à mettre en oeuvre mes compétences acquises en Node.Js, EJS et MongoDB.
 
-3. Aller dans ce sous-dossier dans le terminal, saisir `npm init` et juste remplacer la valeur de "entry point" par "server.js" (appuyer sur "entrée" pour le reste)
+Il n'est évidemment pas terminé puisque je le mets à jour durant mon temps libre et quand l'envie m'y prend.
 
-4. Créer le fichier "server.js" dans le dossier "backend"
+Si vous voulez tout-de-même le tester de votre côté, vous pouvez cloner ce projet et suivre les étapes suivantes pour le lancer :
 
-5. Dans le dossier "backend", exécuter la commande `node server.js` (Cela permet de lancer le serveur web de s'y rendre avec le lien donné)
+1. Remplir les informations nécessaires dans le fichier `.env` en suivant les variables dans le `example.env` (en sachant que la base de données utilisée fonctionne avec MongoDB Atlas, rien ne vous empêche de le modifier vous-même si vous voulez utiliser MongoDB en local)
 
-6. Pour exécuter un script que contient le fichier "package.json", saisir `npm run nom_du_script` (les scripts sont des commandes de terminaux saisies plus rapidement)
+2. Ouvrir un terminal dans le dossier "backend" et installer les dépendances en saisissant `npm install`
 
-7. Pour installer un package, saisir `npm install nom_package` (exemple : `npm install nodemon`)
+3. Allumer le site web en saisissant `nodemon server.js` dans le dossier backend
 
-8. Créer le fichier "app.js" dans "backend" qui permet d'intégrer le package "Express"
-
-9. Créer le dossier "public" dans "backend" pour y mettre les codes CSS, les images...
-
-10. Créer le dossier "views" dans "backend" pour y mettre les vues "ejs" (équivalent pages html), les partials (morceaux de pages à inclure dans les pages principales comme un header par exemple) et les layouts (équivalent à un gabarit à utiliser plus-ou moins partout)
-
-11. Si le site ne charge pas, il faut supprimer "node_modules" et "package-lock.json" dans backend, puis saisir `npm install`
-
-12. Créer le dossier "routes" dans "backend" pour y mettre les différentes routes du site (exemple : "/teaching/web")
-
-13. Créer le dossier "controllers" dans "backend" pour y mettre les différents controllers du site qui permettent de traiter les notions backend des pages
-
-14. Pour utiliser MongoDB :</br>
--Ouvrir un terminal et saisir `mongod --dbpath <chemin>` pour démarrer le serveur MongoDB dans le dossier donné</br>
--Ouvrir un autre terminal et saisir `mongosh` pour manipuler le SGBD</br>
--Pour les différentes commandes, aller sur ce [lien](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Mongo_DB_Shell_Cheat_Sheet_1a0e3aa962.pdf)
-
-15. Créer le dossier "models" dans "backend" pour insérer les fichiers JavaScript qui serviront à gérer les bases de données MongoDB grâce à mongoose
+4. L'addresse URL du site est celle qui correspond à la variable "CLIENT_URL" dans le fichier `.env`
